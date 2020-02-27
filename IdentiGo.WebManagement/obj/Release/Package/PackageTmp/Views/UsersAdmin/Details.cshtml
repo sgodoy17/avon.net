@@ -1,0 +1,43 @@
+﻿@model IdentiGo.Domain.Security.User
+
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+<div>
+    <h4>Detalle</h4>
+    <div class="ln_solid"></div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+    </dl>
+</div>
+<h4>Listado de roles por usuario</h4>
+@if (ViewBag.RoleNames.Count == 0)
+{
+    <hr />
+    <p>Este usuario no tiene ningun rol asociado.</p>
+}
+
+<table class="table">
+
+    @foreach (var item in ViewBag.RoleNames)
+    {
+        <tr>
+            <td>
+                @item
+            </td>
+        </tr>
+    }
+</table>
+<div class="ln_solid"></div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class= "btn btn-success" })
+    @Html.ActionLink("Regresar al Listado", "Index", null, new { @class= "btn btn-default" })
+</p>
+
+

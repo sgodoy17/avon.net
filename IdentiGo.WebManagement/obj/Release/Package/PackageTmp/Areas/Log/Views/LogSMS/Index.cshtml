@@ -1,0 +1,190 @@
+﻿@model IdentiGo.WebManagement.Areas.Log.Models.SMSModel
+
+@{
+    ViewBag.Title = "Log SMS";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Log SMS</h4>
+
+        <ol class="breadcrumb">
+            <li><a href="">Log</a></li>
+
+            <li class="active"><a href="@Url.Action("Index")">Log SMS</a></li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box table-responsive">
+            @using (Html.BeginForm())
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StateSMS)
+                    @Html.EnumDropDownListFor(m => m.StateSMS, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateStart)
+                    @Html.TextBoxFor(m => m.DateStart, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateEnd)
+                    @Html.TextBoxFor(m => m.DateEnd, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                </div>
+
+                <div class="form-group text-right m-b-0">
+                    <button class="btn btn-primary waves-effect waves-light" type="submit">
+                        Consultar
+                    </button>
+                </div>
+            }
+            @if (Model.LogSMS != null)
+            {
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card-box">
+                            <h4 class="m-t-0 m-b-30 header-title">Número de Mensajes</h4>
+
+                            <div id="total-msg"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card-box">
+                            <h4 class="m-t-0 m-b-30 header-title">Consolidado de Mensajes</h4>
+
+                            <div id="state-pie"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="m-t-0 header-title"><b>Registros</b></h4>
+
+                <table id="datatable" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.LogSMS.FirstOrDefault().CodeValidation)
+                            </td>
+
+                            <td>
+                                @Html.DisplayNameFor(model => model.LogSMS.FirstOrDefault().Document)
+                            </td>
+
+                            <td>
+                                @Html.DisplayNameFor(model => model.LogSMS.FirstOrDefault().PhoneAnswer)
+                            </td>
+
+                            <td>
+                                @Html.DisplayNameFor(model => model.LogSMS.FirstOrDefault().Message)
+                            </td>
+
+                            <td>
+                                @Html.DisplayNameFor(model => model.LogSMS.FirstOrDefault().Input)
+                            </td>
+
+                            <td>
+                                @Html.DisplayNameFor(model => model.LogSMS.FirstOrDefault().Date)
+                            </td>
+
+                            <td width="120">
+                                Acciones
+                            </td>
+                        </tr>
+                    </thead>                    
+
+                    <tbody>
+                        @foreach (var item in Model.LogSMS)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CodeValidation)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Document)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PhoneAnswer)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Message)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Input)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+
+                                <td class="actions">
+                                    <a href="@Url.Action("Delete", new { id = item.Id })" class="on-default" style="color:red"><i class="fa fa-trash-o"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }            
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        c3.generate({
+            bindto: "#total-msg",
+            data: {
+                columns: [
+                    ['Total ', @Model.Total],
+                ],
+                type: 'pie',
+                width: '165',
+                height: '165',
+            },
+            color: {
+                pattern: ["#5fbeaa"],
+            },
+            pie: {
+                label: {
+                    show: true,
+                    format: function (value, radio, id) {
+                        return d3.format('')(value);
+                    }
+                }
+            }
+        });
+
+        c3.generate({
+            bindto: "#state-pie",
+            data: {
+                columns: [
+                    ['Enviados ', @Model.Accept],
+                    ['No Enviados ', @Model.NotAccept]
+                ],
+                type: 'pie',
+                width: '165',
+                height: '165'
+            },
+            color: {
+                pattern: ["#D9914C", "#D9594C", "#7AB6C2"]
+            },
+            pie: {
+                label: {
+                    show: true,
+                    format: function (value, radio, id) {
+                        return d3.format('')(value);
+                    }
+                }
+            }
+        });
+    </script>
+}

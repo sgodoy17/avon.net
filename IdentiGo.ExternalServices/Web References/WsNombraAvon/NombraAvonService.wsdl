@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="http://131.0.168.230:8080/NombraAvonQA/services/NombraAvonService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns1="urn:NombraAvon" xmlns:impl="http://131.0.168.230:8080/NombraAvonQA/services/NombraAvonService" targetNamespace="http://131.0.168.230:8080/NombraAvonQA/services/NombraAvonService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:NombraAvon">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="Result">
+        <xsd:sequence>
+          <xsd:element name="errorCode" nillable="true" type="soapenc:string" />
+          <xsd:element name="output1" nillable="true" type="soapenc:string" />
+          <xsd:element name="output10" nillable="true" type="soapenc:string" />
+          <xsd:element name="output11" nillable="true" type="soapenc:string" />
+          <xsd:element name="output12" nillable="true" type="soapenc:string" />
+          <xsd:element name="output13" nillable="true" type="soapenc:string" />
+          <xsd:element name="output14" nillable="true" type="soapenc:string" />
+          <xsd:element name="output15" nillable="true" type="soapenc:string" />
+          <xsd:element name="output2" nillable="true" type="soapenc:string" />
+          <xsd:element name="output3" nillable="true" type="soapenc:string" />
+          <xsd:element name="output4" nillable="true" type="soapenc:string" />
+          <xsd:element name="output5" nillable="true" type="soapenc:string" />
+          <xsd:element name="output6" nillable="true" type="soapenc:string" />
+          <xsd:element name="output7" nillable="true" type="soapenc:string" />
+          <xsd:element name="output8" nillable="true" type="soapenc:string" />
+          <xsd:element name="output9" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultarCodigoResponse">
+    <wsdl:part name="ConsultarCodigoReturn" type="tns1:Result" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarCodigoRequest">
+    <wsdl:part name="parameter1" type="soapenc:string" />
+    <wsdl:part name="parameter2" type="soapenc:string" />
+    <wsdl:part name="parameter3" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarGZSLRequest">
+    <wsdl:part name="parameter1" type="soapenc:string" />
+    <wsdl:part name="parameter2" type="soapenc:string" />
+    <wsdl:part name="parameter3" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidarPagoContadoResponse">
+    <wsdl:part name="ValidarPagoContadoReturn" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="ValidarPagoContadoRequest">
+    <wsdl:part name="cedula" type="xsd:int" />
+    <wsdl:part name="genero" type="soapenc:string" />
+    <wsdl:part name="riesgo" type="soapenc:string" />
+    <wsdl:part name="fec_Nacimiento" type="xsd:int" />
+    <wsdl:part name="division" type="xsd:int" />
+    <wsdl:part name="zona" type="xsd:int" />
+    <wsdl:part name="unidad" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarCedulaRequest">
+    <wsdl:part name="parameter1" type="soapenc:string" />
+    <wsdl:part name="parameter2" type="soapenc:string" />
+    <wsdl:part name="parameter3" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarGZSLResponse">
+    <wsdl:part name="ConsultarGZSLReturn" type="tns1:Result" />
+  </wsdl:message>
+  <wsdl:message name="CargarSAFRequest">
+    <wsdl:part name="parameter1" type="soapenc:string" />
+    <wsdl:part name="parameter2" type="soapenc:string" />
+    <wsdl:part name="parameter3" type="soapenc:string" />
+    <wsdl:part name="parameter4" type="soapenc:string" />
+    <wsdl:part name="parameter5" type="soapenc:string" />
+    <wsdl:part name="parameter6" type="soapenc:string" />
+    <wsdl:part name="parameter7" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarCedulaResponse">
+    <wsdl:part name="ConsultarCedulaReturn" type="tns1:Result" />
+  </wsdl:message>
+  <wsdl:message name="CargarSAFResponse">
+    <wsdl:part name="CargarSAFReturn" type="tns1:Result" />
+  </wsdl:message>
+  <wsdl:portType name="AvonServiceEndPoint">
+    <wsdl:operation name="ValidarPagoContado" parameterOrder="cedula genero riesgo fec_Nacimiento division zona unidad">
+      <wsdl:input name="ValidarPagoContadoRequest" message="impl:ValidarPagoContadoRequest" />
+      <wsdl:output name="ValidarPagoContadoResponse" message="impl:ValidarPagoContadoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCedula" parameterOrder="parameter1 parameter2 parameter3">
+      <wsdl:input name="ConsultarCedulaRequest" message="impl:ConsultarCedulaRequest" />
+      <wsdl:output name="ConsultarCedulaResponse" message="impl:ConsultarCedulaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarGZSL" parameterOrder="parameter1 parameter2 parameter3">
+      <wsdl:input name="ConsultarGZSLRequest" message="impl:ConsultarGZSLRequest" />
+      <wsdl:output name="ConsultarGZSLResponse" message="impl:ConsultarGZSLResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCodigo" parameterOrder="parameter1 parameter2 parameter3">
+      <wsdl:input name="ConsultarCodigoRequest" message="impl:ConsultarCodigoRequest" />
+      <wsdl:output name="ConsultarCodigoResponse" message="impl:ConsultarCodigoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CargarSAF" parameterOrder="parameter1 parameter2 parameter3 parameter4 parameter5 parameter6 parameter7">
+      <wsdl:input name="CargarSAFRequest" message="impl:CargarSAFRequest" />
+      <wsdl:output name="CargarSAFResponse" message="impl:CargarSAFResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NombraAvonServiceSoapBinding" type="impl:AvonServiceEndPoint">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="ValidarPagoContado">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="ValidarPagoContadoRequest">
+        <wsdlsoap:body use="encoded" namespace="http://ws.sapian.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="ValidarPagoContadoResponse">
+        <wsdlsoap:body use="encoded" namespace="http://131.0.168.230:8080/NombraAvonQA/services/NombraAvonService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCedula">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="ConsultarCedulaRequest">
+        <wsdlsoap:body use="encoded" namespace="http://ws.sapian.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="ConsultarCedulaResponse">
+        <wsdlsoap:body use="encoded" namespace="http://131.0.168.230:8080/NombraAvonQA/services/NombraAvonService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarGZSL">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="ConsultarGZSLRequest">
+        <wsdlsoap:body use="encoded" namespace="http://ws.sapian.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="ConsultarGZSLResponse">
+        <wsdlsoap:body use="encoded" namespace="http://131.0.168.230:8080/NombraAvonQA/services/NombraAvonService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCodigo">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="ConsultarCodigoRequest">
+        <wsdlsoap:body use="encoded" namespace="http://ws.sapian.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="ConsultarCodigoResponse">
+        <wsdlsoap:body use="encoded" namespace="http://131.0.168.230:8080/NombraAvonQA/services/NombraAvonService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CargarSAF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="CargarSAFRequest">
+        <wsdlsoap:body use="encoded" namespace="http://ws.sapian.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="CargarSAFResponse">
+        <wsdlsoap:body use="encoded" namespace="http://131.0.168.230:8080/NombraAvonQA/services/NombraAvonService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AvonServiceEndPointService">
+    <wsdl:port name="NombraAvonService" binding="impl:NombraAvonServiceSoapBinding">
+      <wsdlsoap:address location="http://131.0.168.230:8080/NombraAvonQA/services/NombraAvonService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

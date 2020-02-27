@@ -1,0 +1,71 @@
+﻿@model IdentiGo.Domain.Entity.General.Company
+@{
+    ViewBag.Title = "Empresas";
+}
+
+@using (Html.BeginForm("Create", "Company", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Crear</h4>
+    <div class="ln_solid"></div>
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nit, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Nit, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Color, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Color, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Logo</label>
+        <div class="col-md-10">
+            <input type="file" name="file" id="file" class="file" data-min-file-count="1" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">
+            Modúlos
+        </label>
+        <div class="col-md-10">
+            @foreach (var item in (SelectList)ViewBag.RoleId)
+            {
+                <input type="checkbox" name="SelectedRoles" value="@item.Value" class="checkbox-inline" />
+                @Html.Label(item.Value, new { @class = "control-label", @for = item.Value })
+            }
+        </div>
+    </div>
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Guardar" />
+            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-danger" })
+        </div>
+    </div>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Color').colorpicker({
+                format: 'rgba'
+            }).on('changeColor', function (e) {
+                $('.navbar-inverse')[0].style.backgroundColor = e.color.toHex();
+            });
+            $("#file").on("change", function (event) {;
+                $('#home-logo-company').attr('src', URL.createObjectURL(event.target.files[0]));
+            });
+        });
+    </script>
+}

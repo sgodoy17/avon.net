@@ -1,0 +1,140 @@
+﻿@model IdentiGo.WebManagement.Areas.General.Models.CandidateZoneResponseModel
+
+@{
+    ViewBag.Title = "Nombramientos";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="btn-group pull-right m-t-15">
+                <button type="button" class="btn btn-default dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Ajustes <span class="m-l-5"><i class="fa fa-cog"></i></span></button>
+
+                <ul class="dropdown-menu drop-menu-right" role="menu">
+                    <li><a href="@Url.Action("CandidateResponse")">Respuestas de Candidata</a></li>
+                </ul>
+            </div>
+
+            <h4 class="page-title">Confirmaciones de Candidata</h4>
+
+            <ol class="breadcrumb">
+                <li><a href="">General</a></li>
+
+                <li><a href="@Url.Action("Index")">Nombramientos</a></li>
+
+                <li class="active">Respuestas de Candidata</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateStart)
+
+                    @Html.TextBoxFor(m => m.DateStart, "{0:yyyy-MM-dd}", new { @class = "form-control", required = "", type = "date" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateEnd)
+
+                    @Html.TextBoxFor(m => m.DateEnd, "{0:yyyy-MM-dd}", new { @class = "form-control", required = "", type = "date" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TypeConsult)
+
+                    @Html.EnumDropDownListFor(m => m.TypeConsult, "-- Tipo de Consulta --", new { @class = "form-control", required = "" })
+                </div>
+
+                <div class="form-group text-right m-b-0">
+                    <button class="btn btn-primary waves-effect waves-light" type="submit">
+                        Consultar
+                    </button>
+                </div>
+
+                <h4 class="m-t-0 header-title"><b>Registros</b></h4>
+
+                <table id="datatable" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Código Empresaria
+                            </th>
+
+                            <th>
+                                Documento
+                            </th>
+
+                            <th>
+                                Nombre Candidata
+                            </th>
+
+                            <th>
+                                Apellido Candidata
+                            </th>
+
+                            <th>
+                                Respuesta
+                            </th>
+
+                            <th>
+                                Zona
+                            </th>
+
+                            <th>
+                                Unidad
+                            </th>
+
+                            <th>
+                                Etapa del Proceso
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model.CandidateResponse)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nomination.CodeUser)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nomination.Document)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nomination.Name)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nomination.LastName)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Message)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nomination.Zone.Number)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nomination.Unit.Number)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Stage)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+}

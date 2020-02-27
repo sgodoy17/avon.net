@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="IdentiGo.ExternalServices.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="IdentiGo_ExternalServices_WsInformacionComercial_InformacionComercialWSService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://cifin.asobancaria.com/InformacionComercialWS/services/InformacionComercial</Value>
+    </Setting>
+    <Setting Name="IdentiGo_ExternalServices_WsProspecta_ProspectaWSService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://cifin.asobancaria.com/ws/ProspectaWebService/services/Prospecta</Value>
+    </Setting>
+    <Setting Name="IdentiGo_ExternalServices_WsNombraAvon_AvonServiceEndPointService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://131.0.168.230:8080/NombraAvonQA/services/NombraAvonService</Value>
+    </Setting>
+    <Setting Name="IdentiGo_ExternalServices_WsProspectaPlusTest_ProspectaPlusWSService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ttuweb3.universo.corp/ws/ProspectaPlusWebService/services/ProspectaPlus</Value>
+    </Setting>
+    <Setting Name="IdentiGo_ExternalServices_WsProspectaPlus_ProspectaPlusWSService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://cifin.asobancaria.com/ws/ProspectaPlusWebService/services/ProspectaPlus</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,49 @@
+﻿@model IdentiGo.Domain.Entity.General.Company
+
+@{
+    ViewBag.Title = "Empresas";
+}
+
+<div>
+    <h4>Detalle</h4>
+    <div class="ln_solid"></div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<h4>Listado de modúlos por empresa</h4>
+@if (ViewBag.RoleNames.Count == 0)
+{
+    <hr />
+    <p>Esta empresa no tiene asociado ningún modúlo.</p>
+}
+
+<table class="table">
+
+    @foreach (var item in ViewBag.RoleNames)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+        </tr>
+    }
+</table>
+<div class="ln_solid"></div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class= "btn btn-success" })
+    @Html.ActionLink("Regresar al Listado", "Index", null, new { @class= "btn btn-default" })
+</p>
+
+

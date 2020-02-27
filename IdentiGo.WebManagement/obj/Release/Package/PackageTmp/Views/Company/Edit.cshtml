@@ -1,0 +1,105 @@
+﻿@model IdentiGo.Domain.Entity.General.Company
+
+@{
+    ViewBag.Title = "Empresas";
+}
+@using (Html.BeginForm("Edit", "Company", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Editar</h4>
+        <div class="ln_solid"></div>
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Image)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nit, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Nit, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Color, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Color, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Image, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                <input type="file" name="file" id="file" class="file" />
+                <div class="file-preview">
+                    <div class="file-drop-disabled">
+                        <div class="file-preview-thumbnails">
+                            <div class="file-live-thumbs">
+                                <div class="file-preview-frame" id="preview-1472048309066-0" data-fileindex="0" data-template="image" style="width: 97%;">
+                                    <div class="kv-file-content">
+                                        <img src="@Model.Image" class="kv-preview-data file-preview-image" style="width: 100%; height: 160px;">
+                                    </div><div class="file-thumbnail-footer">
+                                        <div class="file-footer-caption" title="dispute_bills_chicago.png"></div>
+                                        <div class="file-actions">
+                                            <div class="file-footer-buttons">
+                                                <button type="button" class="kv-file-zoom btn btn-xs btn-default" title="View Details"><i class="glyphicon glyphicon-zoom-in"></i></button>
+                                            </div>
+
+                                            <div class="file-upload-indicator" title="Not uploaded yet"><i class="glyphicon glyphicon-hand-down text-warning"></i></div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>    <div class="file-preview-status text-center text-success"></div>
+                        <div class="kv-fileinput-error file-error-message" style="display: none;"></div>
+                    </div>
+                </div>
+                @*@Html.TextBoxFor(m => m.File, new { @class = "file", type = "file", data_min_file_count = "1" })*@
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Modúlos", new { @class = "control-label col-md-2" })
+            <span class=" col-md-10">
+                @foreach (var item in Model.RolesList)
+                {
+                    <input type="checkbox" name="SelectedRole" value="@item.Value" checked="@item.Selected" class="checkbox-inline" />
+                    @Html.Label(item.Value, new { @class = "control-label" })
+                }
+            </span>
+        </div>
+
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-success" />
+                @(Component.Transversal.Utilities.CurrentUserUtils.CurrentEnterprise.Id == null ? Html.ActionLink("Cancelar", "Index", null, new { @class= "btn btn-danger" }) : Html.ActionLink("Cancelar", "Index", "Home", null, new { @class= "btn btn-danger" }))
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$('#Image').fileinput();
+            $('#Color').colorpicker({
+                format: 'rgba'
+            }).on('changeColor', function (e) {
+                $('.navbar-inverse')[0].style.backgroundColor = e.color.toHex();
+            });
+            $('.navbar-inverse')[0].style.backgroundColor = '@Model.Color';
+            $("#file").on("change", function (event) {;
+                $('#home-logo-company').attr('src', URL.createObjectURL(event.target.files[0]));
+            });
+            $('#home-logo-company').attr("src", "@Model.Image");
+        });
+
+    </script>
+}

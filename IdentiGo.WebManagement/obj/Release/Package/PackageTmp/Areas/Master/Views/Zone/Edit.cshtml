@@ -1,0 +1,93 @@
+﻿@model IdentiGo.Domain.Entity.Master.Zone
+@using System.Web.Mvc
+@{
+    var selectList = new List<SelectListItem>();
+    selectList.Add(new SelectListItem { Text = "Si", Value = "true" });
+    selectList.Add(new SelectListItem { Text = "No", Value = "false" });
+}
+
+@{
+    ViewBag.Title = "Zonas";
+}
+
+@using (Html.BeginForm("Edit"))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="page-title">Zonas</h4>
+
+            <ol class="breadcrumb">
+                <li><a href="">Maestros</a></li>
+
+                <li><a href="@Url.Action("Index")">Zonas</a></li>
+
+                <li class="active">Editar</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Number)
+
+                    @Html.TextBoxFor(m => m.Number, new { @class = "form-control", required = "" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Code)
+
+                    @Html.TextBoxFor(m => m.Code, new { @class = "form-control", required = "" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name)
+
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", required = "" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DivisionId)
+
+                    @Html.DropDownListFor(m => m.DivisionId, (SelectList)ViewBag.DivisionList, "-- Seleccione la División --", new { @class = "form-control", required = "" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SelfSend)
+
+                    @Html.DropDownListFor(m => m.SelfSend, selectList, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NumberTrys)
+
+                    @Html.TextBoxFor(m => m.NumberTrys, new { @class = "form-control", required = true })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SendCode)
+
+                    @Html.DropDownListFor(m => m.SendCode, selectList, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CashPayment)
+
+                    @Html.DropDownListFor(m => m.CashPayment, selectList, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group text-right m-b-0">
+                    <button class="btn btn-primary waves-effect waves-light" type="submit">
+                        Guardar
+                    </button>
+
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-default waves-effect waves-light m-l-5" })
+                </div>
+            </div>
+        </div>
+    </div>
+}

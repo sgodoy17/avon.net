@@ -1,0 +1,131 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Presentation", "1. Presentation", "{46E09314-3DDF-4D94-A6CC-95D166CB9B22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Business", "2. Business", "{C3CDC0E7-5F7D-4CCB-83F4-4F5D5D869C4D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Data", "3. Data", "{D7BF753D-FFED-4EBA-A6BB-12119318C63F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Component", "4. Component", "{E4043B30-8E76-4C95-B3D9-A443EDD9C601}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentiGo.Data", "IdentiGo.Data\IdentiGo.Data.csproj", "{E0B5CD56-3B0C-432C-A748-463EFDB21C34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentiGo.Domain", "IdentiGo.Domain\IdentiGo.Domain.csproj", "{14B55F81-157F-4659-96BD-F705E8901D37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentiGo.Transversal", "IdentiGo.Transversal\IdentiGo.Transversal.csproj", "{FE0CFF89-DD9A-454D-B8EF-D10E8689BB95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Component.Transversal", "Component.Transversal\Component.Transversal.csproj", "{6C397668-0FD7-4911-B9C0-4F95ACE54ADC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentiGo.Services", "IdentiGo.Services\IdentiGo.Services.csproj", "{A29BF986-103A-44EB-997F-8C6539248C5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentiGo.WebManagement", "IdentiGo.WebManagement\IdentiGo.WebManagement.csproj", "{91420624-5AD5-4C46-8CC5-34DFE95E370F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentiGo.WebApi", "IdentiGo.WebApi\IdentiGo.WebApi.csproj", "{A26CE469-B924-4412-9637-AD63DBFC991C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentiGo.ExternalServices", "IdentiGo.ExternalServices\IdentiGo.ExternalServices.csproj", "{0AD1F4C4-F41E-40E6-927A-156B2B1329DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTPService", "FTPService\FTPService.csproj", "{A8144BAA-5851-4A3A-8984-41BB5F5634DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0B5CD56-3B0C-432C-A748-463EFDB21C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0B5CD56-3B0C-432C-A748-463EFDB21C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0B5CD56-3B0C-432C-A748-463EFDB21C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0B5CD56-3B0C-432C-A748-463EFDB21C34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14B55F81-157F-4659-96BD-F705E8901D37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14B55F81-157F-4659-96BD-F705E8901D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14B55F81-157F-4659-96BD-F705E8901D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14B55F81-157F-4659-96BD-F705E8901D37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE0CFF89-DD9A-454D-B8EF-D10E8689BB95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0CFF89-DD9A-454D-B8EF-D10E8689BB95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0CFF89-DD9A-454D-B8EF-D10E8689BB95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0CFF89-DD9A-454D-B8EF-D10E8689BB95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C397668-0FD7-4911-B9C0-4F95ACE54ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C397668-0FD7-4911-B9C0-4F95ACE54ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C397668-0FD7-4911-B9C0-4F95ACE54ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C397668-0FD7-4911-B9C0-4F95ACE54ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A29BF986-103A-44EB-997F-8C6539248C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A29BF986-103A-44EB-997F-8C6539248C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A29BF986-103A-44EB-997F-8C6539248C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A29BF986-103A-44EB-997F-8C6539248C5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91420624-5AD5-4C46-8CC5-34DFE95E370F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91420624-5AD5-4C46-8CC5-34DFE95E370F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91420624-5AD5-4C46-8CC5-34DFE95E370F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91420624-5AD5-4C46-8CC5-34DFE95E370F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A26CE469-B924-4412-9637-AD63DBFC991C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A26CE469-B924-4412-9637-AD63DBFC991C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A26CE469-B924-4412-9637-AD63DBFC991C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A26CE469-B924-4412-9637-AD63DBFC991C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AD1F4C4-F41E-40E6-927A-156B2B1329DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AD1F4C4-F41E-40E6-927A-156B2B1329DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AD1F4C4-F41E-40E6-927A-156B2B1329DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AD1F4C4-F41E-40E6-927A-156B2B1329DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8144BAA-5851-4A3A-8984-41BB5F5634DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8144BAA-5851-4A3A-8984-41BB5F5634DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8144BAA-5851-4A3A-8984-41BB5F5634DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8144BAA-5851-4A3A-8984-41BB5F5634DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E0B5CD56-3B0C-432C-A748-463EFDB21C34} = {D7BF753D-FFED-4EBA-A6BB-12119318C63F}
+		{14B55F81-157F-4659-96BD-F705E8901D37} = {C3CDC0E7-5F7D-4CCB-83F4-4F5D5D869C4D}
+		{FE0CFF89-DD9A-454D-B8EF-D10E8689BB95} = {C3CDC0E7-5F7D-4CCB-83F4-4F5D5D869C4D}
+		{6C397668-0FD7-4911-B9C0-4F95ACE54ADC} = {E4043B30-8E76-4C95-B3D9-A443EDD9C601}
+		{A29BF986-103A-44EB-997F-8C6539248C5C} = {C3CDC0E7-5F7D-4CCB-83F4-4F5D5D869C4D}
+		{91420624-5AD5-4C46-8CC5-34DFE95E370F} = {46E09314-3DDF-4D94-A6CC-95D166CB9B22}
+		{A26CE469-B924-4412-9637-AD63DBFC991C} = {46E09314-3DDF-4D94-A6CC-95D166CB9B22}
+		{0AD1F4C4-F41E-40E6-927A-156B2B1329DF} = {C3CDC0E7-5F7D-4CCB-83F4-4F5D5D869C4D}
+		{A8144BAA-5851-4A3A-8984-41BB5F5634DC} = {46E09314-3DDF-4D94-A6CC-95D166CB9B22}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.enterdev.co:8080/tfs/identigo
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = IdentiGo.Data\\IdentiGo.Data.csproj
+		SccProjectTopLevelParentUniqueName1 = AVON.sln
+		SccProjectName1 = IdentiGo.Data
+		SccLocalPath1 = IdentiGo.Data
+		SccProjectUniqueName2 = IdentiGo.Domain\\IdentiGo.Domain.csproj
+		SccProjectTopLevelParentUniqueName2 = AVON.sln
+		SccProjectName2 = IdentiGo.Domain
+		SccLocalPath2 = IdentiGo.Domain
+		SccProjectUniqueName3 = IdentiGo.Transversal\\IdentiGo.Transversal.csproj
+		SccProjectTopLevelParentUniqueName3 = AVON.sln
+		SccProjectName3 = IdentiGo.Transversal
+		SccLocalPath3 = IdentiGo.Transversal
+		SccProjectUniqueName4 = Component.Transversal\\Component.Transversal.csproj
+		SccProjectTopLevelParentUniqueName4 = AVON.sln
+		SccProjectName4 = Component.Transversal
+		SccLocalPath4 = Component.Transversal
+		SccProjectUniqueName5 = IdentiGo.Services\\IdentiGo.Services.csproj
+		SccProjectTopLevelParentUniqueName5 = AVON.sln
+		SccProjectName5 = IdentiGo.Services
+		SccLocalPath5 = IdentiGo.Services
+		SccProjectUniqueName6 = IdentiGo.WebManagement\\IdentiGo.WebManagement.csproj
+		SccProjectTopLevelParentUniqueName6 = AVON.sln
+		SccProjectName6 = IdentiGo.WebManagement
+		SccLocalPath6 = IdentiGo.WebManagement
+		SccProjectUniqueName7 = IdentiGo.WebApi\\IdentiGo.WebApi.csproj
+		SccProjectTopLevelParentUniqueName7 = AVON.sln
+		SccProjectName7 = IdentiGo.WebApi
+		SccLocalPath7 = IdentiGo.WebApi
+		SccProjectUniqueName8 = IdentiGo.ExternalServices\\IdentiGo.ExternalServices.csproj
+		SccProjectTopLevelParentUniqueName8 = AVON.sln
+		SccProjectName8 = IdentiGo.ExternalServices
+		SccLocalPath8 = IdentiGo.ExternalServices
+		SccProjectUniqueName9 = FTPService\\FTPService.csproj
+		SccProjectTopLevelParentUniqueName9 = AVON.sln
+		SccProjectName9 = FTPService
+		SccLocalPath9 = FTPService
+	EndGlobalSection
+EndGlobal

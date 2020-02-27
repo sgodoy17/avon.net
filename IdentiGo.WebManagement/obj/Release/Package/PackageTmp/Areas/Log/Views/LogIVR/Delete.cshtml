@@ -1,0 +1,64 @@
+﻿@model IdentiGo.Domain.Entity.Log.LogIVR
+
+@{
+    ViewBag.Title = "Log IVR";
+}
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Log IVR</h4>
+        <ol class="breadcrumb">
+            <li><a href="">Log</a></li>
+            <li><a href="@Url.Action("Index")">Log IVR</a></li>
+            <li class="active">Eliminar</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <p class="text-muted m-b-30 font-13">
+                Esta seguro que desea eliminar este registro?
+            </p>
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.CampId)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CampId)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PhoneAnswer)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneAnswer)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Message)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Message)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Input)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Input)
+                </dd>
+            </dl>
+            <div class="form-group text-right m-b-0">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <button class="btn btn-danger waves-effect waves-light" type="submit">
+                        Eliminar
+                    </button>
+                    @Html.ActionLink("Regresar al Listado", "Index", null, new { @class = "btn btn-default waves-effect waves-light m-l-5" })
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

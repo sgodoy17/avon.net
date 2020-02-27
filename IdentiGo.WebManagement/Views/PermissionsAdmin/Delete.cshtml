@@ -1,0 +1,49 @@
+﻿@model IdentiGo.Domain.Security.Role
+
+@{
+    ViewBag.Title = "Permisos";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Permisos</h4>
+        <ol class="breadcrumb">
+            <li><a href="">Administración</a></li>
+            <li><a href="@Url.Action("Index")">Permisos</a></li>
+            <li class="active">Eliminar</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <p class="text-muted m-b-30 font-13">
+                Esta seguro que desea eliminar este registro?
+            </p>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DisplayName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.DisplayName)
+                </dd>
+            </dl>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group text-right m-b-0">
+                    <button class="btn btn-danger waves-effect waves-light" type="submit">
+                        Eliminar
+                    </button>
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-default waves-effect waves-light m-l-5" })
+                </div>
+            }
+        </div>
+    </div>
+</div>

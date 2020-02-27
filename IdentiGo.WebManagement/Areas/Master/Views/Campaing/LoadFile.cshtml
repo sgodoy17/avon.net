@@ -1,0 +1,26 @@
+﻿@model IdentiGo.Domain.Entity.Master.Campaing
+
+@{
+    ViewBag.Title = "Campañas";
+}
+
+@using (Html.BeginForm("LoadFile", "Campaing", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+{
+    <div class="form-horizontal">
+        <h4>Cargar desde un Archivo</h4>
+        <div class="ln_solid"></div>
+        @Html.ValidationSummary("", new {@class = "text-danger"})
+        <div class="form-group">
+            <label class="col-md-2 control-label">Archivo</label>
+            <div class="col-md-10">
+                <input type="file" name="file" id="file" class="file" data-min-file-count="1"/>
+            </div>
+        </div>
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Cancelar", "Index", null, new {@class = "btn btn-danger"})
+            </div>
+        </div>
+    </div>
+}

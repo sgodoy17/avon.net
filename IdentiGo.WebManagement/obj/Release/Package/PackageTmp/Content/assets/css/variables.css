@@ -1,0 +1,11 @@
+tr.group,
+tr.group:hover {
+    background-color: #ddd !important;
+    font-weight: 800;
+}
+tr.odd td {
+    padding-left: 40px !important;
+}
+tr.even td {
+    padding-left: 40px !important;
+}

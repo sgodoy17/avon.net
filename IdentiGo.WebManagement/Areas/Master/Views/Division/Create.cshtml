@@ -1,0 +1,44 @@
+﻿@model IdentiGo.Domain.Entity.Master.Division
+@{
+    ViewBag.Title = "Divisiones";
+}
+
+@using (Html.BeginForm("Create"))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="page-title">Divisiones</h4>
+            <ol class="breadcrumb">
+                <li><a href="">Maestros</a></li>
+                <li><a href="@Url.Action("Index")">Divisiones</a></li>
+                <li class="active">Crear</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Number)
+                    @Html.TextBoxFor(m => m.Number, new { @class = "form-control", required = "" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Code)
+                    @Html.TextBoxFor(m => m.Code, new { @class = "form-control", required = "" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name)
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", required = "" })
+                </div>
+                <div class="form-group text-right m-b-0">
+                    <button class="btn btn-primary waves-effect waves-light" type="submit">
+                        Guardar
+                    </button>
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-default waves-effect waves-light m-l-5" })
+                </div>
+            </div>
+        </div>
+    </div>
+}

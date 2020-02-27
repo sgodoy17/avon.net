@@ -1,0 +1,37 @@
+﻿<script type="text/javascript">
+    $(document)
+        .on("click",
+            ".edit-button",
+            function () {
+
+            });
+
+    $(document)
+    .on("click",
+        ".delete-button",
+        function () {
+            if (confirm("¿Está seguro que desea eliminar este registro?")) {
+                var $this = $(this);
+
+                $.ajax({
+                    url: "@Url.Action("Delete")",
+                    method: "POST",
+                    data: {
+                        id: $this.data("id")
+                    },
+                    success: function (data) {
+                        //console.log(JSON.parse(data));
+                        $this.closest("tr").remove();
+                    }
+                });
+                $this.closest("tr").remove();
+            }
+        });
+
+    $(document)
+    .on("click",
+        ".edit-button",
+        function () {
+            window.location = "@Url.Action("Edit")/" + $(this).data("id");
+        });
+</script>

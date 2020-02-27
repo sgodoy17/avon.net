@@ -1,0 +1,49 @@
+﻿@model IdentiGo.Domain.Entity.Master.Zone
+
+@{
+    ViewBag.Title = "Zonas";
+}
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Zonas</h4>
+        <ol class="breadcrumb">
+            <li><a href="">Maestros</a></li>
+            <li><a href="@Url.Action("Index")">Zonas</a></li>
+            <li class="active">Detalle</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Number)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Number)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Code)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Code)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DivisionId)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Division.Number)
+                </dd>
+            </dl>
+            <div class="form-group text-right m-b-0">
+                @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary waves-effect waves-light" })
+                @Html.ActionLink("Regresar al Listado", "Index", null, new { @class = "btn btn-default waves-effect waves-light m-l-5" })
+            </div>
+        </div>
+    </div>
+</div>
+

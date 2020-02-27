@@ -1,0 +1,77 @@
+﻿@model IdentiGo.Domain.Entity.IdentiGo.Nomination
+
+@{
+    ViewBag.Title = "Nombramientos";
+}
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Nombramientos</h4>
+        <ol class="breadcrumb">
+            <li><a href="">General</a></li>
+            <li><a href="@Url.Action("Index")">Nombramientos</a></li>
+            <li class="active">Reiniciar Procesos</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <p class="text-muted m-b-30 font-13">
+                Esta seguro que desea reinicar el proceso?
+            </p>
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Document)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Document)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StageProcess)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.StageProcess)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.State)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.State)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StateDocument)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.StateDocument)
+                </dd>
+            </dl>
+            <div class="form-group text-right m-b-0">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.Id)
+                    <button class="btn btn-danger waves-effect waves-light" type="submit">
+                        Reiniciar
+                    </button>
+                    @Html.ActionLink("Regresar al Listado", "Index", null, new { @class = "btn btn-default waves-effect waves-light m-l-5" })
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

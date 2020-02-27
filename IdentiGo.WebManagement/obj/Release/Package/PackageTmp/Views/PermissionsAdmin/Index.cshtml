@@ -1,0 +1,61 @@
+﻿@model IEnumerable<IdentiGo.Domain.Security.Role>
+@{
+    ViewBag.Title = "Permisos";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="btn-group pull-right m-t-15">
+            <button type="button" class="btn btn-default dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Ajustes <span class="m-l-5"><i class="fa fa-cog"></i></span></button>
+            <ul class="dropdown-menu drop-menu-right" role="menu">
+                <li><a href="@Url.Action("Create")">Crear</a></li>
+            </ul>
+        </div>
+        <h4 class="page-title">Permisos</h4>
+        <ol class="breadcrumb">
+            <li><a href="">Administración</a></li>
+            <li class="active"><a href="@Url.Action("Index")">Permisos</a></li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+
+        <div class="card-box table-responsive">
+            <h4 class="m-t-0 header-title"><b>Registros</b></h4>
+            <table id="datatable" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DisplayName)
+                        </th>
+                        <th width="120">
+                            Acciones
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DisplayName)
+                            </td>
+                            <td class="actions">
+                                <a href="@Url.Action("Edit", new { id = item.Id })" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                <a href="@Url.Action("Delete", new { id = item.Id })" class="on-default" style="color:red"><i class="fa fa-trash-o"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

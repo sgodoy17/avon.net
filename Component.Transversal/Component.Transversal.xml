@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Component.Transversal</name>
+    </assembly>
+    <members>
+        <member name="M:Component.Transversal.Cryptography.PasswordHasher.GetPinHashClientSide(System.String,System.String)">
+            <summary>
+            Generates a hash based on a 4 digit password, using the provided salt and the application constant <see cref="F:Component.Transversal.Cryptography.PasswordHasher.ApplicationPepper"/>. This is meant to be used on the client-side only. At the server side another hash is used, based on BCrypt. This method is expected to take about 20 ms per call.
+            </summary>
+            <param name="pin"></param>
+            <param name="salt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Component.Transversal.Cryptography.PasswordHasher.CreateDatabaseHash(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="inputHash"></param>
+            <param name="bcryptFactor"></param>
+        </member>
+        <member name="M:Component.Transversal.Cryptography.PasswordHasher.GenerateUserSalt">
+            <summary>
+            Generates a new salt to be used with the PBKDF2, which is a new GUID, but this may be changed in the future
+            </summary>
+            <returns>A new GUID in string form</returns>
+        </member>
+        <member name="M:Component.Transversal.Cryptography.PasswordHasher.DatabaseAuthenticateUser(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="inputHash"></param>
+            <param name="hashToCompareWith"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Component.Transversal.Cryptography.PasswordHasher.GetKey(System.String,System.String)">
+            <summary>
+            SHA512 of password
+            SHA512 of Agility2Salt
+            Rfc2898DeriveBytes of hashed password and hashed salt with 10.000 itterations
+            Creates a AES256 key
+            </summary>
+            <param name="password"></param>
+            <param name="salt"></param>
+            <param name="itterations"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Component.Transversal.Cryptography.PasswordHashTests">
+            <summary>
+                Verifies output and performance of the hashing algorithms used in the solution.
+            </summary>
+        </member>
+        <member name="M:Component.Transversal.Cryptography.PasswordHashTests.CheckBCryptCreateAndVerify">
+            <summary>
+                Creates and validates BCrypt hashes
+            </summary>
+        </member>
+        <member name="M:Component.Transversal.Cryptography.PasswordHashTests.CheckBCryptPerformance">
+            <summary>
+                Checks the performance of the BCrypt hash authentication. The validation process is supposed to take about 20 ms at
+                the server side.
+            </summary>
+        </member>
+        <member name="M:Component.Transversal.Cryptography.PasswordHashTests.CheckWorkfactorPbkdf2Itterations">
+            <summary>
+                Checks the performance of initial pin Pbkdf2 hashing for authentication. The validation process is supposed to take
+                about 20 ms at the client (totem / website) side.
+            </summary>
+        </member>
+        <member name="T:Component.Transversal.WebApi.Documentation.SampleDataAttribute">
+            <summary>
+            Provides a way to provide sample data for the documentation pages
+            </summary>
+        </member>
+        <member name="M:Component.Transversal.WebApi.Documentation.SampleDataAttribute.#ctor(System.Object)">
+            <summary>
+            Sets the sample data for a property
+            </summary>
+            <param name="sampleData">The provided sample data for this property</param>
+        </member>
+        <member name="P:Component.Transversal.WebApi.Documentation.SampleDataAttribute.SampleData">
+            <summary>
+            The provided sample data for this property
+            </summary>
+        </member>
+        <member name="T:Component.Transversal.WebApi.IdentificationType">
+            <summary>
+            Document type of identification number:
+            
+            0 = Unknown
+            1 = CC Cedula Ciudanía
+            2 = CE Cédula Extrangería
+            3 = CD Carné Diplomatico
+            4 = TI Tarjeta de Identidad
+            5 = PA Pasaporte
+            6 = RC Registro Civil
+            7 = N.U.I.P. Número Único de Identificación Personal
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.IdentificationType.Unknown">
+            <summary>
+            0 = Unknown
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.IdentificationType.CedulaCiudania">
+            <summary>
+            1 = CC Cedula Ciudanía
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.IdentificationType.CedulaExtrangeria">
+            <summary>
+            2 = CE Cédula Extrangería
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.IdentificationType.CarneDiplomatico">
+            <summary>
+            3 = CD Carné Diplomatico
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.IdentificationType.TarjetaDeIdentidad">
+            <summary>
+            4 = TI Tarjeta de Identidad
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.IdentificationType.Pasaporte">
+            <summary>
+            5 = PA Pasaporte
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.IdentificationType.RegistroCivil">
+            <summary>
+            6 = RC Registro Civil
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.IdentificationType.Nuip">
+            <summary>
+            7 = N.U.I.P. Número Único de Identificación Personal
+            </summary>
+        </member>
+        <member name="T:Component.Transversal.WebApi.Responses.AuthenticatedUserResponse">
+            <summary>
+            Response after a user has tried to authenticate
+            </summary>
+        </member>
+        <member name="P:Component.Transversal.WebApi.Responses.AuthenticatedUserResponse.CompleteName">
+            <summary>
+            Complete name of the user, combination of both first names and both last name
+            </summary>
+        </member>
+        <member name="P:Component.Transversal.WebApi.Responses.AuthenticatedUserResponse.BicycleUserStatus">
+            <summary>
+            Current validation status of the user
+            </summary>
+        </member>
+        <member name="P:Component.Transversal.WebApi.Responses.AuthenticatedUserResponse.AuthenticationStatus">
+            <summary>
+            Authentication status of the user in the current session at a totem. 
+            </summary>
+        </member>
+        <member name="T:Component.Transversal.WebApi.Responses.AuthenticationStatus">
+            <summary>
+            Authentication status of a user in the current session at a totem. Status 'Authenticated' is required to continue in the process.
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.Responses.AuthenticationStatus.NotAuthenticated">
+            <summary>
+            Unknown status
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.Responses.AuthenticationStatus.Authenticated">
+            <summary>
+            User has been successfully authenticated using his or her pin code. Allow access.
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.Responses.AuthenticationStatus.WrongPinCode">
+            <summary>
+            User has supplied a wrong pin code. Deny all access access, but give the user the option to try again.
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.Responses.AuthenticationStatus.TooManyAttemptsBlockedTemporarily">
+            <summary>
+            User has been temporarily locked out,  and may try again after a certain time.
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.Responses.AuthenticationStatus.TooManyAttemptsBlocked">
+            <summary>
+            User has been locked out, and is required to reset the pin code in the web page or at a attention center of AMVA.
+            </summary>
+        </member>
+        <member name="T:Component.Transversal.WebApi.Responses.BicycleUserStatus">
+            <summary>
+            Gives the current validation status of the user:
+            
+            0 = unvalidated
+            1 = validated and active
+            2 = blocked
+            3 = sanction active
+            4 = revoked
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.Responses.BicycleUserStatus.Unvalidated">
+            <summary>
+            0 = unvalidated
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.Responses.BicycleUserStatus.Validated">
+            <summary>
+            1 = validated and active
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.Responses.BicycleUserStatus.Blocked">
+            <summary>
+            2 = blocked
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.Responses.BicycleUserStatus.SantionActive">
+            <summary>
+            3 = sanction active
+            </summary>
+        </member>
+        <member name="F:Component.Transversal.WebApi.Responses.BicycleUserStatus.Revoked">
+            <summary>
+            4 = revoked
+            </summary>
+        </member>
+        <member name="T:Component.Transversal.WebApi.Responses.ValidateUserResponse">
+            <summary>
+            Initial response for user information, that is obtained using the card ID or cedula number.
+            </summary>
+        </member>
+        <member name="P:Component.Transversal.WebApi.Responses.ValidateUserResponse.Id">
+            <summary>
+            Unique user ID
+            </summary>
+        </member>
+        <member name="P:Component.Transversal.WebApi.Responses.ValidateUserResponse.Salt">
+            <summary>
+            The user-based salt for generating the password hash
+            </summary>
+        </member>
+        <member name="P:Component.Transversal.WebApi.Responses.ValidateUserResponse.Name">
+            <summary>
+            Short name of the user, combination of first first name and first last name
+            </summary>
+        </member>
+        <member name="P:Component.Transversal.WebApi.Responses.ValidateUserResponse.BicycleUserStatus">
+            <summary>
+            Current validation status of the user
+            </summary>
+        </member>
+        <member name="T:Component.Transversal.WebApi.ViewModel.LoanAuthViewModel">
+            <summary>
+            Request object to start validating a user.
+            </summary>
+        </member>
+        <member name="P:Component.Transversal.WebApi.ViewModel.LoanAuthViewModel.TotemId">
+            <summary>
+            Id of Totem who makes the request
+            </summary>
+        </member>
+        <member name="P:Component.Transversal.WebApi.ViewModel.LoanAuthViewModel.UserId">
+            <summary>
+            Application specific identification number (row id) of user
+            </summary>
+        </member>
+        <member name="P:Component.Transversal.WebApi.ViewModel.LoanAuthViewModel.PinHash">
+            <summary>
+            Hash of pincode, hashed using the <see cref="M:Component.Transversal.Cryptography.PasswordHasher.GetPinHashClientSide(System.String,System.String)">GetPinHashClientSide</see> method.
+            </summary>
+        </member>
+        <member name="P:Component.Transversal.WebApi.ViewModel.ValidateUserViewModel.Totem">
+            <summary>
+            Id of Totem who makes the request
+            </summary>
+        </member>
+    </members>
+</doc>

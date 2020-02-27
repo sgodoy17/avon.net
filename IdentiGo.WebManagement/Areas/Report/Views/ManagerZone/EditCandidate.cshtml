@@ -1,0 +1,88 @@
+﻿@model IdentiGo.Transversal.Model.EditNomination
+@{
+    ViewBag.Title = "Reporte Gerente de Zona";
+}
+
+@using (Html.BeginForm("Edit"))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="page-title">Nombramientos</h4>
+            <ol class="breadcrumb">
+                <li><a href="">General</a></li>
+                <li><a href="@Url.Action("IndexCandidate", new { Code = Model.CodeId, type = Model.TypeConsulManagerZone, campaing = Model.CodeCampaing })">Nombramientos</a></li>
+                <li class="active">Editar Nombramiento</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <a data-toggle="tooltip" title="Regresar" href="@Url.Action("IndexCandidate", new { codeId = Model.CodeId, type = Model.TypeConsulManagerZone, campaing = Model.CodeCampaing })" class="pull-right btn btn-sm btn-icon waves-effect btn-default waves-light"> <i class="fa fa-arrow-left"></i> </a>
+                <h4 class="m-t-0 header-title"><b>Información Editable</b></h4>
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                @Html.HiddenFor(x => x.Nomination.Id)
+                @Html.HiddenFor(x => x.CodeId)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nomination.CodeUser)
+                    @Html.DropDownListFor(m => m.Nomination.CodeUser, (SelectList)ViewBag.CodeUserList, "-- Seleccione la Candidata --", new { @class = "form-control", required = "" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nomination.UnitId)
+                    @Html.DropDownListFor(m => m.Nomination.UnitId, (SelectList)ViewBag.UnitList, "-- Seleccione la unidad --", new { @class = "form-control", required = "" })
+                </div>
+                <div class="form-group text-right m-b-0">
+                    <button class="btn btn-primary waves-effect waves-light" type="submit">
+                        Guardar
+                    </button>
+                    @Html.ActionLink("Cancelar", "IndexCandidate", new { codeId = Model.CodeId, type = Model.TypeConsulManagerZone, campaing = Model.CodeCampaing }, new { @class = "btn btn-default waves-effect waves-light m-l-5" })
+                </div>
+            </div>
+            <div class="card-box">
+                <h4 class="m-t-0 header-title"><b>Detalle</b></h4>
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nomination.Document)
+                    @Html.TextBoxFor(m => m.Nomination.Document, new { @class = "form-control", disabled = "" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nomination.Name)
+                    @Html.TextBoxFor(m => m.Nomination.Name, new { @class = "form-control", disabled = "" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nomination.LastName)
+                    @Html.TextBoxFor(m => m.Nomination.LastName, new { @class = "form-control", disabled = "" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nomination.CodeUser)
+                    @Html.TextBoxFor(m => m.Nomination.CodeUser, new { @class = "form-control", disabled = "" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nomination.StageProcess)
+                    @Html.EnumDropDownListFor(m => m.Nomination.StageProcess, new { @class = "form-control", disabled = "" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nomination.State)
+                    @Html.EnumDropDownListFor(m => m.Nomination.State, new { @class = "form-control", disabled = "" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nomination.StateDocument)
+                    @Html.EnumDropDownListFor(m => m.Nomination.StateDocument, new { @class = "form-control", disabled = "" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nomination.ZoneId)
+                    @Html.TextBoxFor(m => m.Nomination.Zone.DisplayValue, new { @class = "form-control", disabled = "" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nomination.DateCreated)
+                    @Html.TextBoxFor(m => m.Nomination.DateCreated, new { @class = "form-control", disabled = "" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nomination.DateNomination)
+                    @Html.TextBoxFor(m => m.Nomination.DateNomination, new { @class = "form-control", disabled = "" })
+                </div>
+            </div>
+        </div>
+    </div>
+}

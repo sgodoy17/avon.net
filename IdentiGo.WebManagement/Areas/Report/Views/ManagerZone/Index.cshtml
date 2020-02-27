@@ -1,0 +1,223 @@
+﻿@model IdentiGo.Transversal.Model.ManagerZoneReportModel
+@{
+    ViewBag.Title = "Reporte Gerente de Zona";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "form-validation", @class = "form-horizontal" }))
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="btn-group pull-right m-t-15">
+                <button type="button" class="btn btn-default dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Ajustes <span class="m-l-5"><i class="fa fa-cog"></i></span></button>
+
+                <ul class="dropdown-menu drop-menu-right" role="menu">
+                    <li><a href="@Url.Action("ExportData")">Exportar Información</a></li>
+                    <li><a href="@Url.Action("CandidateResponse")">Respuestas de Candidata</a></li>
+                    <li><a href="@Url.Action("LoadFile")">Nombramientos Manuales</a></li>
+                </ul>
+            </div>
+
+            <h4 class="page-title">Nombramientos Gerente de Zona</h4>
+
+            <ol class="breadcrumb">
+                <li><a href="">Reportes</a></li>
+
+                <li class="active"><a href="@Url.Action("Index")">Nombramientos Gerente de Zona</a></li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <div class="container col.md-12">
+                    @Html.HiddenFor(model => model.ZoneId)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TypeConsulManagerZone, new { @class = "col-md-2 control-label" })
+
+                        <div class="col-md-9">
+                            @Html.EnumDropDownListFor(m => m.TypeConsulManagerZone, "Seleccione el Tipo", new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CampaingId, new { @class = "col-md-2 control-label" })
+
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(m => m.CampaingId, (SelectList)ViewBag.CampaingList, "Todos", new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateYear, new { @class = "col-md-2 control-label" })
+
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(m => m.DateYear, (IEnumerable<SelectListItem>)ViewBag.Years, "Seleccione un año", new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateStart, new { @class = "col-md-2 control-label" })
+
+                        <div class="col-md-9 dateContainer">
+                            <div class="input-group input-append date" id="startDatePicker">
+                                @Html.TextBoxFor(m => m.DateStart, "{0:yyyy-MM-dd}", new { @class = "form-control", @placeholder = "Fecha Inicio" })
+
+                                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateEnd, new { @class = "col-md-2 control-label" })
+
+                        <div class="col-md-9 dateContainer">
+                            <div class="input-group input-append date" id="endDatePicker">
+                                @Html.TextBoxFor(m => m.DateEnd, "{0:yyyy-MM-dd}", new { @class = "form-control", @placeholder = "Fecha Fin" })
+
+                                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-toolbar mb-3">
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-primary external waves-effect waves-light" type="submit">
+                                Consultar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                @if (Model.Init)
+                {
+                    <div class="row col-md-12">
+                        <div class="col-md-6">
+                            <div class="card-box">
+                                <h4 class="m-t-0 m-b-30 header-title"><b>Número de Nombramientos</b></h4>
+
+                                <div id="TotalPie"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card-box">
+                                <h4 class="m-t-0 m-b-30 header-title"><b>Consolidado de Estados</b></h4>
+
+                                <div id="StatePie"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="m-t-0 header-title"><b>Registros</b></h4>
+
+                    <table id="datatable" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ListIimpresario.FirstOrDefault().Code)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ListIimpresario.FirstOrDefault().Pending)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ListIimpresario.FirstOrDefault().Invalid)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ListIimpresario.FirstOrDefault().Success)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ListIimpresario.FirstOrDefault().Total)
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model.ListIimpresario)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="@Url.Action("IndexCandidate", new { codeId = item.CodeId, type = Model.TypeConsulManagerZone, campaingId = Model.CampaingId, dateStart = Model.DateStart, dateEnd = Model.DateEnd, year = Model.DateYear })">@Html.DisplayFor(modelItem => item.Code)</a>
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Pending)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Invalid)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Success)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Total)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts
+{
+    <script>
+        c3.generate({
+            bindto: '#TotalPie',
+            data: {
+                columns: [
+                    ['Total ', @Model.Total],
+                ],
+                type: 'pie',
+                width: '165',
+                height: '165',
+            },
+            color: {
+                pattern: ["#5fbeaa"]
+            },
+            pie: {
+                label: {
+                    show: true,
+                    format: function (value, ratio, id) {
+                        return d3.format('')(value);
+                    }
+                }
+            }
+        });
+        c3.generate({
+            bindto: '#StatePie',
+            data: {
+                columns: [
+                    ['Pendientes ', @Model.Pending],
+                    ['Incumplen ', @Model.Invalid],
+                    ['Aprobados ', @Model.Success]
+                ],
+                type: 'pie',
+                width: '165',
+                height: '165',
+            },
+            color: {
+                pattern: ["#D9914C", "#D9594C", "#7AB6C2"]
+            },
+            pie: {
+                label: {
+                    show: true,
+                    format: function (value, ratio, id) {
+                        return d3.format('')(value);
+                    }
+                }
+            }
+        });
+    </script>
+}

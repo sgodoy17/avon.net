@@ -1,0 +1,225 @@
+﻿@model IdentiGo.WebManagement.Areas.Log.Models.NominationHistoricModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Log Nombramientos</h4>
+
+        <ol class="breadcrumb">
+            <li><a href="">Nombramientos</a></li>
+
+            <li class="active"><a href="@Url.Action("Index")">Log Nombramientos</a></li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box table-responsive">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "form-validation", @class = "form-horizontal" }))
+            {
+                <div class="container col-md-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateYear, new { @class = "col-md-2 control-label" })
+
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(m => m.DateYear, (IEnumerable<SelectListItem>)ViewBag.Years, "Seleccione un año", new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateStart, new { @class = "col-md-2 control-label" })
+
+                        <div class="col-md-9 dateContainer">
+                            <div class="input-group input-append date" id="startDatePicker">
+                                @Html.TextBoxFor(m => m.DateStart, "{0:yyyy-MM-dd}", new { @class = "form-control", @placeholder = "Fecha Inicio" })
+
+                                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateEnd, new { @class = "col-md-2 control-label" })
+
+                        <div class="col-md-9 dateContainer">
+                            <div class="input-group input-append date" id="endDatePicker">
+                                @Html.TextBoxFor(m => m.DateEnd, "{0:yyyy-MM-dd}", new { @class = "form-control", @placeholder = "Fecha Fin" })
+
+                                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-toolbar mb-3">
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-primary external waves-effect waves-light" type="submit">
+                                Consultar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (Model.HictoricNomination != null)
+            {
+                <h4 class="m-t-0 header-title"><b>Registros</b></h4>
+
+                <table id="datatable" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.HictoricNomination.FirstOrDefault().ZoneId)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.HictoricNomination.FirstOrDefault().UnitId)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.HictoricNomination.FirstOrDefault().CodeUser)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.HictoricNomination.FirstOrDefault().PhoneAnswer)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.HictoricNomination.FirstOrDefault().PhoneNumber)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.HictoricNomination.FirstOrDefault().DateCreated)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.HictoricNomination.FirstOrDefault().Date)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.HictoricNomination.FirstOrDefault().CodeVerification)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.HictoricNomination.FirstOrDefault().StageProcess)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.HictoricNomination.FirstOrDefault().State)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.HictoricNomination.FirstOrDefault().StateDocument)
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model.HictoricNomination)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Zone.DisplayValue)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Unit.NumberCodeName)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CodeUser)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneAnswer)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateCreated)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CodeVerification)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StageProcess)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.State)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StateDocument)
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        c3.generate({
+            bindto: '#TotalPie',
+            data: {
+                columns: [
+                    ['Total ', @Model.Total],
+                ],
+                type: 'pie',
+                width: '165',
+                height: '165',
+            },
+            color: {
+                pattern: ["#5fbeaa"]
+            },
+            pie: {
+                label: {
+                    show: true,
+                    format: function (value, ratio, id) {
+                        return d3.format('')(value);
+                    }
+                }
+            }
+        });
+        c3.generate({
+            bindto: '#StatePie',
+            data: {
+                columns: [
+                    ['Pendientes ', @Model.Pending],
+                    ['Incumplen ', @Model.Invalid],
+                    ['Aprobados ', @Model.Success]
+                ],
+                type: 'pie',
+                width: '165',
+                height: '165',
+            },
+            color: {
+                pattern: ["#D9914C", "#D9594C", "#7AB6C2"]
+            },
+            pie: {
+                label: {
+                    show: true,
+                    format: function (value, ratio, id) {
+                        return d3.format('')(value);
+                    }
+                }
+            }
+        });
+    </script>
+}

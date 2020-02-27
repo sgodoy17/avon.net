@@ -1,0 +1,33 @@
+﻿@model IdentiGo.Domain.Security.Role
+
+@{
+    ViewBag.Title = "Permisos";
+}
+
+<div>
+    <h4>Detalle</h4>
+    <div class="ln_solid"></div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DisplayName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<div class="ln_solid"></div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class= "btn btn-success" })
+    @Html.ActionLink("Regresar al Listado", "Index", null, new { @class= "btn btn-default" })
+</p>
+
+
+
+

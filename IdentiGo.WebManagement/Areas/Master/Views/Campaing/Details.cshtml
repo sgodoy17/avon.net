@@ -1,0 +1,37 @@
+﻿@model IdentiGo.Domain.Entity.Master.Campaing
+
+@{
+    ViewBag.Title = "Campañas";
+}
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Campañas</h4>
+        <ol class="breadcrumb">
+            <li><a href="">Maestros</a></li>
+            <li><a href="@Url.Action("Index")">Campaña</a></li>
+            <li class="active">Detalle</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Number)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Number)
+                </dd>
+            </dl>
+            <div class="form-group text-right m-b-0">
+                @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary waves-effect waves-light" })
+                @Html.ActionLink("Regresar al Listado", "Index", null, new { @class = "btn btn-default waves-effect waves-light m-l-5" })
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,92 @@
+﻿@model IdentiGo.Domain.Entity.General.Config
+@using IdentiGo.Domain.Enums
+@{
+    ViewBag.Title = "Configuraciones";
+}
+@using (Html.BeginForm("Edit", "Config", new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Editar</h4>
+        <div class="ln_solid"></div>
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CompanyId)
+        @Html.HiddenFor(model => model.PageTemp)
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumberQuestion, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.NumberQuestion, new { @class = "form-control", type = "number" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumberQuestionValid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.NumberQuestionValid, new
+                {
+                    @class = "form-control",
+                    type = "number",
+                    data_val_range = string.Format("El campo # Preguntas Correctas debe estar entre {0} y {1}.", 0, Model.NumberQuestion),
+                    data_val_range_min = 0,
+                    data_val_range_max = Model.NumberQuestion
+                })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumberIntentByDocument, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.NumberIntentByDocument, new { @class = "form-control", type = "number" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumberIntentByDocumentTotal, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.NumberIntentByDocumentTotal, new { @class = "form-control", type = "number" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DayLokedDocument, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.DayLokedDocument, new { @class = "form-control", type = "number" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimeOutValidation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.TimeOutValidation, new { @class = "form-control", type = "number" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimeOutUpdate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.TimeOutUpdate, new { @class = "form-control", type = "number" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimeOut, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.TimeOut, new { @class = "form-control", type = "number" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                Páginas
+            </label>
+            <div class="col-md-10">
+                @foreach (var item in Model.PageList)
+                {
+                    <input type="checkbox" name="selectedPage" value="@item.Value" checked="@item.Selected" class="checkbox-inline" />
+                    @Html.Label(item.Text, new { @class = "control-label" })
+                }
+            </div>
+        </div>
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-success" />
+                @Html.ActionLink("Empresa", "Edit", "Company", new { area = string.Empty, id = Model.CompanyId }, new { @class= "btn btn-default" })
+                @(User.IsInRole(RoleName.Role1) ? Html.ActionLink("Cancelar", "Index", null, new { @class= "btn btn-danger" }) : Html.ActionLink("Cancelar", "Index", "Home", new {area = string.Empty}, new { @class= "btn btn-danger" }))
+            </div>
+        </div>
+    </div>
+}

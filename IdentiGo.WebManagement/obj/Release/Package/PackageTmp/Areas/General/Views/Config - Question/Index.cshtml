@@ -1,0 +1,76 @@
+﻿@model IEnumerable<IdentiGo.Domain.Entity.General.Config>
+
+@{
+    ViewBag.Title = "Configuraciones";
+    ViewBag.UrlAction = Url.Action("Create");
+}
+
+ <table class="table table-bordered" id="datatable">
+        <thead>    
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumberQuestion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumberQuestionValid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumberIntentByDocument)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumberIntentByDocumentTotal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DayLokedDocument)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TimeOutValidation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TimeOutUpdate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompanyId)
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberQuestion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberQuestionValid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberIntentByDocument)
+                </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.NumberIntentByDocumentTotal)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.DayLokedDocument)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.TimeOutValidation)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.TimeOutUpdate)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Company.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class= "btn btn-success btn-sm" })
+                    @Html.ActionLink("Detalle", "Details", new { id = item.Id }, new { @class= "btn btn-default btn-sm" })
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class= "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>   
+   

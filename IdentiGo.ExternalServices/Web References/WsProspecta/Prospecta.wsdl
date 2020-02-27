@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="http://prospecta.webservice.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns1="http://dto.prospecta.webservice.com" xmlns:impl="http://prospecta.webservice.com" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://prospecta.webservice.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dto.prospecta.webservice.com">
+      <xsd:import namespace="http://prospecta.webservice.com" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="InconsistenciasDTO">
+        <xsd:sequence>
+          <xsd:element name="codigo" nillable="true" type="soapenc:string" />
+          <xsd:element name="descripcion" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RespuestaProspectaDTO">
+        <xsd:sequence>
+          <xsd:element name="generoInconsistencias" nillable="true" type="soapenc:boolean" />
+          <xsd:element name="numeroIdentificacion" nillable="true" type="soapenc:string" />
+          <xsd:element name="nombreTitular" nillable="true" type="soapenc:string" />
+          <xsd:element name="consultadaReciente" nillable="true" type="soapenc:boolean" />
+          <xsd:element name="resultado" nillable="true" type="soapenc:string" />
+          <xsd:element name="inconsistencias" nillable="true" type="impl:ArrayOf_tns1_InconsistenciasDTO" />
+          <xsd:element name="tipoIdentificacion" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://prospecta.webservice.com">
+      <xsd:import namespace="http://dto.prospecta.webservice.com" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="ArrayOf_tns1_InconsistenciasDTO">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="tns1:InconsistenciasDTO[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="consultaProspectaRequest">
+    <wsdl:part name="codigoInformacion" type="soapenc:string" />
+    <wsdl:part name="numeroIdentificacion" type="soapenc:string" />
+    <wsdl:part name="tipoIdentificacion" type="soapenc:string" />
+  </wsdl:message>
+  <wsdl:message name="consultaProspectaResponse">
+    <wsdl:part name="consultaProspectaReturn" type="tns1:RespuestaProspectaDTO" />
+  </wsdl:message>
+  <wsdl:portType name="ProspectaWS">
+    <wsdl:operation name="consultaProspecta" parameterOrder="codigoInformacion numeroIdentificacion tipoIdentificacion">
+      <wsdl:input name="consultaProspectaRequest" message="impl:consultaProspectaRequest" />
+      <wsdl:output name="consultaProspectaResponse" message="impl:consultaProspectaResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProspectaSoapBinding" type="impl:ProspectaWS">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="consultaProspecta">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="consultaProspectaRequest">
+        <wsdlsoap:body use="encoded" namespace="http://prospecta.webservice.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="consultaProspectaResponse">
+        <wsdlsoap:body use="encoded" namespace="http://prospecta.webservice.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProspectaWSService">
+    <wsdl:port name="Prospecta" binding="impl:ProspectaSoapBinding">
+      <wsdlsoap:address location="http://cifin.asobancaria.com/ws/ProspectaWebService/services/Prospecta" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -545,7 +545,7 @@ D:\Development\projects\work\avon.net\IdentiGo.Data\obj\Release\IdentiGo.Data.Mi
 D:\Development\projects\work\avon.net\IdentiGo.Data\obj\Release\IdentiGo.Data.Migrations.update30.resources
 D:\Development\projects\work\avon.net\IdentiGo.Data\obj\Release\IdentiGo.Data.Migrations.update31.resources
 D:\Development\projects\work\avon.net\IdentiGo.Data\obj\Release\IdentiGo.Data.csproj.GenerateResource.cache
-D:\Development\projects\work\avon.net\IdentiGo.Data\obj\Release\IdentiGo.Data.csproj.CoreCompileInputs.cache
 D:\Development\projects\work\avon.net\IdentiGo.Data\obj\Release\IdentiGo.Data.csproj.CopyComplete
 D:\Development\projects\work\avon.net\IdentiGo.Data\obj\Release\IdentiGo.Data.dll
 D:\Development\projects\work\avon.net\IdentiGo.Data\obj\Release\IdentiGo.Data.pdb
+D:\Development\projects\work\avon.net\IdentiGo.Data\obj\Release\IdentiGo.Data.csproj.CoreCompileInputs.cache

@@ -450,7 +450,7 @@ D:\Development\projects\work\avon.net\IdentiGo.Services\bin\Release\es\Microsoft
 D:\Development\projects\work\avon.net\IdentiGo.Services\bin\Release\es\Microsoft.Owin.resources.dll
 D:\Development\projects\work\avon.net\IdentiGo.Services\bin\Release\es\Microsoft.Owin.Security.resources.dll
 D:\Development\projects\work\avon.net\IdentiGo.Services\obj\Release\IdentiGo.Services.csprojAssemblyReference.cache
-D:\Development\projects\work\avon.net\IdentiGo.Services\obj\Release\IdentiGo.Services.csproj.CoreCompileInputs.cache
 D:\Development\projects\work\avon.net\IdentiGo.Services\obj\Release\IdentiGo.Services.csproj.CopyComplete
 D:\Development\projects\work\avon.net\IdentiGo.Services\obj\Release\IdentiGo.Services.dll
 D:\Development\projects\work\avon.net\IdentiGo.Services\obj\Release\IdentiGo.Services.pdb
+D:\Development\projects\work\avon.net\IdentiGo.Services\obj\Release\IdentiGo.Services.csproj.CoreCompileInputs.cache

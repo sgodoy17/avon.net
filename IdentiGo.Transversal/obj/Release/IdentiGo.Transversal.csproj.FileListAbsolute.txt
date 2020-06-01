@@ -632,7 +632,7 @@ D:\Development\projects\work\avon.net\IdentiGo.Transversal\bin\Release\es\System
 D:\Development\projects\work\avon.net\IdentiGo.Transversal\bin\Release\es\Microsoft.AspNet.Identity.Owin.resources.dll
 D:\Development\projects\work\avon.net\IdentiGo.Transversal\bin\Release\IdentiGo.ExternalServices.XmlSerializers.dll
 D:\Development\projects\work\avon.net\IdentiGo.Transversal\obj\Release\IdentiGo.Transversal.csprojAssemblyReference.cache
-D:\Development\projects\work\avon.net\IdentiGo.Transversal\obj\Release\IdentiGo.Transversal.csproj.CoreCompileInputs.cache
 D:\Development\projects\work\avon.net\IdentiGo.Transversal\obj\Release\IdentiGo.Transversal.csproj.CopyComplete
 D:\Development\projects\work\avon.net\IdentiGo.Transversal\obj\Release\IdentiGo.Transversal.dll
 D:\Development\projects\work\avon.net\IdentiGo.Transversal\obj\Release\IdentiGo.Transversal.pdb
+D:\Development\projects\work\avon.net\IdentiGo.Transversal\obj\Release\IdentiGo.Transversal.csproj.CoreCompileInputs.cache

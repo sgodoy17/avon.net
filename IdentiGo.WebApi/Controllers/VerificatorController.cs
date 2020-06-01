@@ -379,6 +379,15 @@ namespace IdentiGo.WebApi.Controllers
                 return Ok(new { Result = 0, ex.Message, PhoneAnswer = "" });
             }
         }
+
+        [AllowAnonymous]
+        [ActionName("ConsultDocument")]
+        public IHttpActionResult ConsultDocument(string document)
+        {
+            var result = NominationService.GetLastByDocument(document);
+
+            return Ok(result);
+        }
         #endregion
 
         protected override void Dispose(bool disposing)

@@ -323,8 +323,8 @@ D:\Development\projects\work\avon.net\IdentiGo.ExternalServices\bin\Release\es\M
 D:\Development\projects\work\avon.net\IdentiGo.ExternalServices\bin\Release\es\Microsoft.AspNet.Identity.Owin.resources.dll
 D:\Development\projects\work\avon.net\IdentiGo.ExternalServices\bin\Release\es\EntityFramework.resources.dll
 D:\Development\projects\work\avon.net\IdentiGo.ExternalServices\obj\Release\IdentiGo.ExternalServices.csprojAssemblyReference.cache
-D:\Development\projects\work\avon.net\IdentiGo.ExternalServices\obj\Release\IdentiGo.ExternalServices.csproj.CoreCompileInputs.cache
 D:\Development\projects\work\avon.net\IdentiGo.ExternalServices\obj\Release\IdentiGo.ExternalServices.csproj.CopyComplete
 D:\Development\projects\work\avon.net\IdentiGo.ExternalServices\obj\Release\IdentiGo.ExternalServices.dll
 D:\Development\projects\work\avon.net\IdentiGo.ExternalServices\obj\Release\IdentiGo.ExternalServices.pdb
 D:\Development\projects\work\avon.net\IdentiGo.ExternalServices\obj\Release\IdentiGo.ExternalServices.XmlSerializers.dll
+D:\Development\projects\work\avon.net\IdentiGo.ExternalServices\obj\Release\IdentiGo.ExternalServices.csproj.CoreCompileInputs.cache

@@ -401,7 +401,7 @@ D:\Development\projects\work\avon.net\Component.Transversal\bin\Release\es\Micro
 D:\Development\projects\work\avon.net\Component.Transversal\bin\Release\es\Microsoft.Owin.resources.dll
 D:\Development\projects\work\avon.net\Component.Transversal\bin\Release\es\Microsoft.Owin.Security.resources.dll
 D:\Development\projects\work\avon.net\Component.Transversal\obj\Release\Component.Transversal.csprojAssemblyReference.cache
-D:\Development\projects\work\avon.net\Component.Transversal\obj\Release\Component.Transversal.csproj.CoreCompileInputs.cache
 D:\Development\projects\work\avon.net\Component.Transversal\obj\Release\Component.Transversal.csproj.CopyComplete
 D:\Development\projects\work\avon.net\Component.Transversal\obj\Release\Component.Transversal.dll
 D:\Development\projects\work\avon.net\Component.Transversal\obj\Release\Component.Transversal.pdb
+D:\Development\projects\work\avon.net\Component.Transversal\obj\Release\Component.Transversal.csproj.CoreCompileInputs.cache

@@ -896,7 +896,7 @@ D:\Development\projects\work\avon.net\IdentiGo.WebApi\bin\es\Microsoft.AspNet.Id
 D:\Development\projects\work\avon.net\IdentiGo.WebApi\bin\IdentiGo.ExternalServices.XmlSerializers.dll
 D:\Development\projects\work\avon.net\IdentiGo.WebApi\obj\Release\IdentiGo.WebApi.csproj.App.config
 D:\Development\projects\work\avon.net\IdentiGo.WebApi\obj\Release\IdentiGo.WebApi.csprojAssemblyReference.cache
-D:\Development\projects\work\avon.net\IdentiGo.WebApi\obj\Release\IdentiGo.WebApi.csproj.CoreCompileInputs.cache
 D:\Development\projects\work\avon.net\IdentiGo.WebApi\obj\Release\IdentiGo.WebApi.csproj.CopyComplete
 D:\Development\projects\work\avon.net\IdentiGo.WebApi\obj\Release\IdentiGo.WebApi.dll
 D:\Development\projects\work\avon.net\IdentiGo.WebApi\obj\Release\IdentiGo.WebApi.pdb
+D:\Development\projects\work\avon.net\IdentiGo.WebApi\obj\Release\IdentiGo.WebApi.csproj.CoreCompileInputs.cache
